@@ -5,9 +5,6 @@
 
 page_loaded = true;
 
-
-
-// history manager
 window.onpopstate = function (event){
 	loadPage(event.state.controller, event.state.method, event.state.arg1, true);
 }
@@ -90,9 +87,7 @@ function loadPage(controller, method, arg1, back){
 			}
 
 			// execute page actions
-			if(method == 'artists'){
-// 				artistsPage();
-			} else if(method == 'artist'){
+			if(method == 'artist'){
 				artistPage(arg1);
 			} else if(method == 'album' || method == 'albums' || method == 'playlist'){
 				albumPage();
@@ -931,15 +926,6 @@ function toHex(str) {
 
 
 /*
- * Music player
- */
-
-$(function(){
-
-});
-
-
-/*
  * Initializations
  */
 $(function(){
@@ -1024,10 +1010,11 @@ $(function(){
 	} else {
 		// Restore the previous playlist
 		oldList = $.jStorage.get('playqueue');
-		if(oldList != null && player != null){
+		if(oldList != null){
 			album = oldList;
 		}
 	}
+
 
 	// Create the player
 	$('#player').ttwMusicPlayer(album, {
@@ -1036,6 +1023,7 @@ $(function(){
 			swfPath:'assets/js/Jplayer.swf' //You need to override the default swf path any time the directory structure changes
 		}
 	});
+
 
 	$('.small-player-hover').click(function(){
 		if(isPlayerExpanded)
