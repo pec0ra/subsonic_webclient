@@ -26,12 +26,14 @@ Note : If you use the "Remember" option, the information is stored in the cookie
 
 
 **First connection to the subsonic server :**
+
 1. The user enters his username, password and subsonic server's URL in a form
 2. This identification is sent to the subsonic webclient server via AJAX in POST variables
 3. The subsonic webclient server pings the subsonic server to test the identification
 4. The subsonic webclient server saves the identification in the sessions (or cookies if you select the "remember" option)
 
 **Communication with the subsonic server :**
+
 1. The web browser sends a request to the subsonic webclient server via AJAX
 2. The subsonic webclient server retrieves username, password and subsonic server's URL from the sessions
 3. The subsonic webclient gets the data via the Subsonic API and sends it back to the browser
