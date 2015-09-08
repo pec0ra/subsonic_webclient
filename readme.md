@@ -55,6 +55,13 @@ ________________________
 ________________________
 ```
 
+
+Requirements
+------------
+* Php
+* Apache
+* Mysql
+
 Installation
 ------------
 1. Clone the repository.
