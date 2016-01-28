@@ -28,6 +28,7 @@
 	<th></th>
 	<th>Album cover</th>
 	<th>Album name</th>
+	<th>Artist</th>
 	<th>Year</th>
 	<th>Tracks</th>
 </tr>
@@ -38,6 +39,7 @@ foreach($albums as $album){
 	<td><div class="checkbox checkbox-primary"><label><input class="checkbox-input" type="checkbox" name="select-<?php echo $album->attributes()->id;?>" value="selected"  data-albumid="<?php echo $album->attributes()->id;?>"></label></div></td>
 	<td><img src="<?php echo site_url('main/getCover/' . $album->attributes()->coverArt . '/80');?>" class="shadow-z-1"/></td>
 	<td><a href="#album" onclick="loadPage('main', 'album', <?php echo $album->attributes()->id;?>, false);return false;"><?php echo $album->attributes()->name;?></a></td>
+	<td><a class="text-muted" onclick="loadPage('main', 'artist', <?php echo $album->attributes()->artistId;?>, false);return false;" href="#artist"><?php echo $album->attributes()->artist;?></a></td>
 	<td class="text-muted"><?php echo $album->attributes()->year;?></td>
 	<td class="text-muted"><?php echo $album->attributes()->songCount;?></td>
 </tr>

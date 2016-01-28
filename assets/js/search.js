@@ -15,7 +15,7 @@
 		}
 		var options = $.extend(true, {}, defaultOptions, userOptions);
 
-		var $loader = $('<span class="list-group-item text-center"><img src="'+base_address+'assets/img/ajax-loader.gif"/></span>')
+		var $loader = $('<div class="list-group-item text-center spinner"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"/></svg></div>')
 		var $results = options.results;
 		var $input = $(this).find('.search-input');
 		var $submit = $(this).find('.submit');
@@ -70,6 +70,8 @@
 						}, 400);
 					}
 				} else {
+					window.clearTimeout(timeout);
+					timeout = null;
 					$results.empty();
 					$results.hide();
 				}

@@ -55,8 +55,8 @@ nav .navbar-nav form button{
 	height:calc(100% - 50px);
 }
 
-.loader .spinner{
-	left:calc(50% - 50px);
+.loader .spinner, .search-ajax-results .spinner{
+	left:calc(50% - 50px) !important;
 }
 
 .body-loader .spinner{
