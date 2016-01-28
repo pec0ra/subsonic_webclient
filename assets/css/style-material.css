@@ -1,7 +1,5 @@
 
 .ttw-music-player {
-    width: 313px;
-    margin: 50px auto;
     margin-top:30px;
 }
 
@@ -51,7 +49,6 @@ nav .navbar-nav form button{
 	background:#444;
 	right:0px;
 	top:50px;
-	overflow:auto;
 	border-left:1px solid ##080808;
 	z-index:1000;
 	width:373px;
@@ -186,6 +183,10 @@ td img{
 	display:none;
 }
 
+a.text-muted:hover, a.text-muted:focus{
+	color:#555;
+}
+
 
 
 .spinner {
@@ -263,18 +264,25 @@ td img{
 	}
 	.ttw-music-player{
 		height:100%;
-		width:calc(100% - 10px);
+		width:100%;
 		top:0px;
 		margin-top:0px;
 	}
-	.player{
+	.ttw-music-player .player{
 		position:absolute;
 		left:0px;
 		top:0px;
 		height:60px;
-		width:100%;
+		width:calc(100% - 10px) !important;
+		margin-left:5px !important;
+		margin-right:5px !important;
 	}
-	
+
+	.ttw-music-player .tracklist .table{
+		margin-left:5px !important;
+		margin-right:5px !important;
+		width:calc(100% - 10px) !important;
+	}
 
 	#player.expanded{
 		top:0px !important;

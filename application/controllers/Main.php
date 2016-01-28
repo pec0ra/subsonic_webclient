@@ -53,7 +53,16 @@ class Main extends CI_Controller {
 		$data['playlists'] = $this->xml->getPlaylists()->playlist;
 		$data['artist'] = $this->xml->getArtistInfo($id);
 		$artist = $this->xml->getArtist($id);
-		$data['albums'] = $artist->album;
+
+		// We sort the artists by year
+		$albums = array();
+		foreach($artist->album as $album){
+			$albums[] = $album;
+		}
+		usort($albums, function($a, $b){
+			return $a->attributes()->year + 0 < $b->attributes()->year;
+		});
+		$data['albums'] = $albums;
 		$data['title'] = $artist->attributes()->name;
 		$this->load->view('artist.php', $data);
 	}

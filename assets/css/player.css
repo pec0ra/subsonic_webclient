@@ -1,12 +1,16 @@
 .ttw-music-player {
-    width: 313px;
-    margin: 50px auto;
+    width:100%;
+    height:calc(100% - 30px);
     margin-top:30px;
     color: rgba(255, 255, 255, 0.90);
+    display:flex;
+    flex-direction: column;
 }
 
 .ttw-music-player .player {
-    width: 100%;
+	margin-left:30px;
+	margin-right:30px;
+	width: calc(100% - 60px);
 }
 
 /** Album Cover **/
@@ -195,7 +199,15 @@
 	margin-top:20px;
     color: #999;
     font-size: 12px;
+    flex: 1 1 auto;
+    overflow:auto;
 }
+.ttw-music-player .tracklist .table{
+	margin-left:30px;
+	margin-right:30px;
+	width: calc(100% - 60px);
+}
+
 
 
 .ttw-music-player .tracklist tr:hover {
