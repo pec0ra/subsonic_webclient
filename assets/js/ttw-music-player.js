@@ -230,6 +230,7 @@ player = null;
 		    changePlaylist: function(playlist) {
 			    player.myPlaylist = $.extend(true, [], playlist);
 			    player.buildPlaylist();
+			    player.buildShuffleList();
 			    $.jStorage.set('playqueue', playlist);
 		    },
 		    pushToPlaylist: function(song) {
@@ -259,6 +260,7 @@ player = null;
 			    $tracks.click(function() {
 				    player.playlistAdvance($(this).data('index'));
 			    });
+			    player.buildShuffleList();
 // 			    if(!this.isConfig){
 // 				    this.playlistInit();
 // 			    }
@@ -353,17 +355,20 @@ player = null;
 			    $myJplayer.jPlayer("stop");
 		    },
 	            toggleShuffle: function(){
-			    player.shuffleList = []
 			    if(player.shuffle){
 				    player.shuffle = false;
 				    $('.ttw-music-player .shuffle').css('color', 'rgba(255, 255, 255, 0.90)');
 			    } else {
 				    player.shuffle = true;
-				    for(var i = 0; i < player.myPlaylist.length; i++){
-					    var newIndex = Math.floor(Math.random() * (player.shuffleList.length + 1));
-					    player.shuffleList.splice(newIndex, 0, i);
-				    }
+				    player.buildShuffleList();
 				    $('.ttw-music-player .shuffle').css('color', '#009688');
+			    }
+		    },
+		    buildShuffleList: function(){
+			    player.shuffleList = [];
+			    for(var i = 0; i < player.myPlaylist.length; i++){
+				    var newIndex = Math.floor(Math.random() * (player.shuffleList.length + 1));
+				    player.shuffleList.splice(newIndex, 0, i);
 			    }
 		    },
 
