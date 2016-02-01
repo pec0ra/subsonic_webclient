@@ -52,10 +52,25 @@ foreach($songs as $song){
 	$duration = $duration . ':' . $min;
 ?>
 <tr>
-	<td><div class="checkbox checkbox-primary"><label><input type="checkbox" data-music='{"mp3":"<?php if(isset($song->attributes()->mp3) && $song->attributes()->mp3){echo $song->attributes()->mp3;} else {echo site_url('main/stream/' . $song->attributes()->id);}?>", "title":"<?php echo str_replace('\'', '&#39;', $song->attributes()->title);?>", "artist":"<?php echo str_replace('\'', '&#39;', $song->attributes()->artist);?>", "album":"<?php echo str_replace('\'', '&#39;', $song->attributes()->album);?>", "duration":"<?php echo $duration;?>", "cover": "<?php echo site_url('main/getCover/' . $song->attributes()->coverArt);?>/200", "id":<?php echo $song->attributes()->id; if(isset($is_playlist) && $is_playlist){echo ', "position":' . $i;}?>}' name="select-<?php echo $song->attributes()->id;?>" value="selected"></label></div></td>
-	<td><a class="song" href="#" data-music='{"mp3":"<?php if(isset($song->attributes()->mp3) && $song->attributes()->mp3){echo $song->attributes()->mp3;} else {echo site_url('main/stream/' . $song->attributes()->id);}?>", "title":"<?php echo str_replace('\'', '&#39;', $song->attributes()->title);?>", "artist":"<?php echo str_replace('\'', '&#39;', $song->attributes()->artist);?>", "album":"<?php echo str_replace('\'', '&#39;', $song->attributes()->album);?>", "duration":"<?php echo $duration;?>", "cover": "<?php echo site_url('main/getCover/' . $song->attributes()->coverArt);?>/200", "id":<?php echo $song->attributes()->id;?>}'><?php if($song->attributes()->track) { echo $song->attributes()->track;?> - <?php } echo $song->attributes()->title;?></a></td>
+	<td><div class="checkbox checkbox-primary"><label><input type="checkbox" data-music='{"mp3":"<?php if(isset($song->attributes()->mp3) && $song->attributes()->mp3){echo $song->attributes()->mp3;} else {echo site_url('main/stream/' . $song->attributes()->id);}?>", "title":"<?php echo str_replace('\'', '&#39;', $song->attributes()->title);?>", "artist":"<?php echo str_replace('\'', '&#39;', $song->attributes()->artist);?>", "album":"<?php echo str_replace('\'', '&#39;', $song->attributes()->album);?>", "duration":"<?php echo $duration;?>", "cover": "<?php 
+	if(!isset($is_shared))
+		echo site_url('main/getCover/' . $song->attributes()->coverArt) . '/200';
+	else
+		echo $song->attributes()->coverArt;
+
+?>/200", "id":<?php echo $song->attributes()->id; if(isset($is_playlist) && $is_playlist){echo ', "position":' . $i;}?>}' name="select-<?php echo $song->attributes()->id;?>" value="selected"></label></div></td>
+	<td><a class="song" href="#" data-music='{"mp3":"<?php if(isset($song->attributes()->mp3) && $song->attributes()->mp3){echo $song->attributes()->mp3;} else {echo site_url('main/stream/' . $song->attributes()->id);}?>", "title":"<?php echo str_replace('\'', '&#39;', $song->attributes()->title);?>", "artist":"<?php echo str_replace('\'', '&#39;', $song->attributes()->artist);?>", "album":"<?php echo str_replace('\'', '&#39;', $song->attributes()->album);?>", "duration":"<?php echo $duration;?>", "cover": "<?php 
+	if(!isset($is_shared))
+		echo site_url('main/getCover/' . $song->attributes()->coverArt) . '/200';
+	else
+		echo $song->attributes()->coverArt;
+
+?>", "id":<?php echo $song->attributes()->id;?>}'><?php if($song->attributes()->track) { echo $song->attributes()->track;?> - <?php } echo $song->attributes()->title;?></a></td>
+<?php if(!isset($is_shared)){ ?>
 	<td><a class="text-muted" onclick="loadPage('main', 'artist', <?php echo $song->attributes()->artistId;?>, false);return false;" href="#artist"><?php echo $song->attributes()->artist;?></a></td>
-<?php
+<?php } else { ?>
+	<td class="text-muted"><?php echo $song->attributes()->artist;?></td>
+<?php }
 if(isset($is_playlist) && $is_playlist){
 ?>
 	<td><a class="text-muted" onclick="loadPage('main', 'album', <?php echo $song->attributes()->albumId;?>, false);return false;" href="#album"><?php echo $song->attributes()->album;?></td>

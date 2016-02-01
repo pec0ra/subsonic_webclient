@@ -104,7 +104,7 @@ class Xml extends CI_Model {
 				$songData['artist'] = $song->attributes()->artist;
 				$songData['album'] = $album->attributes()->name;
 				$songData['duration'] = $duration;
-				$songData['cover'] = $this->getCover($song->attributes()->coverArt, 200);
+				$songData['cover'] = site_url('main/getCover/' . $song->attributes()->coverArt) . '/200';
 				$songData['id'] = $song->attributes()->id;
 				$albums['' . $album->attributes()->id]['' . $song->attributes()->id] = $songData;
 			}
@@ -129,7 +129,7 @@ class Xml extends CI_Model {
 			$songData['artist'] = $song->attributes()->artist;
 			$songData['album'] = $song->attributes()->album;
 			$songData['duration'] = $duration;
-			$songData['cover'] = $this->getCover($song->attributes()->coverArt, 200);
+			$songData['cover'] = site_url('main/getCover/' . $song->attributes()->coverArt) . '/200';
 			$songData['id'] = $song->attributes()->id;
 			$songs[] = $songData;
 		}
@@ -240,7 +240,7 @@ class Xml extends CI_Model {
 
 	function createShare($pseudo, $password, $server, $songs){
 		$hash = substr(md5(time() + $pseudo), 0, 10);
-		$parsedSongs = preg_replace(array('#main/stream#', '#main/getCover#'), array('main/guestStream', 'main/guestGetCover'), $songs);
+		$parsedSongs = preg_replace('#main/stream#', 'main/guestStream', $songs);
 
 		$data = array('hash' => $hash, 'pseudo' => $pseudo, 'password' => $password, 'server' => $server, 'songs' => $parsedSongs);
 		$str = $this->db->insert_string('share', $data);

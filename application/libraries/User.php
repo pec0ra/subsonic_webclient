@@ -6,7 +6,7 @@ class User {
 	protected $CI;
 
 	private $noConfigMethods = array('index', 'config', 'tryConfig');
-	private $sharedMethods = array('shared', 'guestStream');
+	private $sharedMethods = array('shared', 'guestStream', 'getCover');
 
 
 	private $pseudo;
