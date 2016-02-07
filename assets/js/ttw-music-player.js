@@ -127,6 +127,10 @@ player = null;
 
                     //Bind jPlayer events. Do not want to pass in options object to prevent them from being overridden by the user
                     $myJplayer.bind($.jPlayer.event.ended, function(event) {
+			address = base_address + 'main/scrobble/' + player.myPlaylist[current].id;
+			$.ajax({
+				url: address,
+			})
 			if(player.repeat){
 				player.playlistAdvance(current);
 			} else {

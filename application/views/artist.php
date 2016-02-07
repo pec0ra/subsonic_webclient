@@ -1,7 +1,7 @@
 <div class="artist-header row">
 <?php if($artist->largeImageUrl != ''){
 	$imageUrl = $artist->largeImageUrl;
-	$imageUrl = preg_replace('/http:\/\//i', 'https://', $imageUrl)
+// 	$imageUrl = preg_replace('/http:\/\//i', 'https://', $imageUrl)
 ?>
 	<div class="col-lg-2">
 		<img src="<?php echo $imageUrl;?>" class="shadow-z-1"/>

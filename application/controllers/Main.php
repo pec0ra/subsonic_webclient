@@ -252,6 +252,10 @@ class Main extends CI_Controller {
 		}
 	}
 
+	public function scrobble($id){
+		echo $this->xml->scrobble($id);
+	}
+
 	public function share(){
 		$server = $this->input->post('server');
 		if(!(substr($server, -1) == '/')){
