@@ -141,6 +141,10 @@ player = null;
                     $myJplayer.bind($.jPlayer.event.play, function(event) {
                         $myJplayer.jPlayer("pauseOthers");
                         $tracks.eq(current).addClass(attr(cssSelector.playing)).siblings().removeClass(attr(cssSelector.playing));
+			address = base_address + 'main/scrobble/' + player.myPlaylist[current].id + '/false';
+			$.ajax({
+				url: address,
+			})
                     });
 
                     $myJplayer.bind($.jPlayer.event.playing, function(event) {

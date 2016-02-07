@@ -270,8 +270,8 @@ class Xml extends CI_Model {
 		return false;
 	}
 
-	function scrobble($id){
-		return $this->loadXml('scrobble', array(array('id', $id), array('time', time() * 1000)))->attributes()->status;
+	function scrobble($id, $submission){
+		return $this->loadXml('scrobble', array(array('id', $id), array('time', time() * 1000), array('submission', $submission)))->attributes()->status;
 	}
 
 

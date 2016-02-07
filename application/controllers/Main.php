@@ -252,8 +252,8 @@ class Main extends CI_Controller {
 		}
 	}
 
-	public function scrobble($id){
-		echo $this->xml->scrobble($id);
+	public function scrobble($id, $submission = 'true'){
+		echo $this->xml->scrobble($id, $submission);
 	}
 
 	public function share(){
